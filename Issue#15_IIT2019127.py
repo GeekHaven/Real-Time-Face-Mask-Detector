@@ -70,7 +70,7 @@ def get_video_type(filename):
 
 # To open a video via link to be inserted in the () of VideoCapture()
 # To open the web cam connected to your laptop/PC, write '0' (without quotes) in the () of VideoCapture()
-cap=cv2.VideoCapture(0)
+cap=cv2.VideoCapture('C:/Users/Mridul/Desktop/Friends Joey and Chandler are Obsessed with Richard (Season 2 Clip) TBS.mp4')
 out = cv2.VideoWriter(filename, get_video_type(filename), 25, get_dims(cap, res))
 
 # fourcc = cv2.VideoWriter_fourcc(*'XVID') 
@@ -95,6 +95,7 @@ while cap.isOpened():
         face_img=face_img/255.0
         face_img=np.reshape(face_img,(224,224,3))
         face_img=np.expand_dims(face_img,axis=0)
+        faces = np.array(faces, dtype="float32")
         
         pred=mymodel.predict_classes(face_img) 
         _, accuracy=mymodel.predict(face_img)[0]
